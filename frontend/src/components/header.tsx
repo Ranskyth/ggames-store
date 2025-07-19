@@ -1,8 +1,16 @@
+"use client"
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export const Header = () => {
+  const pathname = usePathname()
+
+  console.log(pathname)
+
   return (
-    <div className="flex justify-between items-center">
+    <header className="flex border-b-2 mb-10 bg-[#131313] justify-between items-center">
       <div className="flex items-center gap-60">
         <div className="relative flex items-center">
           <div className="w-36">
@@ -17,19 +25,31 @@ export const Header = () => {
           </h1>
         </div>
         <div>
-          <nav className="border-2 border-red-600 w-[420px] py-3 px-12 rounded-4xl">
-            <ul className="flex justify-between">
-                <li><Link href={"/"}>Inicio</Link></li>
-                <li><Link href={"/contas"}>Contas</Link></li>
-                <li><a href={"https://discord.com"}>Discord</a></li>
+          <nav className="bg-black overflow-hidden w-[420px] py-3 px-12 rounded-4xl">
+            <ul className="flex relative justify-between">
+              <div className={`bg-amber-400 w-34 rounded-4xl h-[47px] ${pathname == "/produtos" ? `left-[84px] ease-in-out duration-500` : "left-[-47px] ease-in-out duration-500"} top-[-10px] absolute`}></div>
+              <li>
+                <Link onClick={() => {}} className="font-semibold relative z-1" href={"/"}>
+                  Inicio
+                </Link>
+              </li>
+              <li>
+                <Link onClick={() => {}} className="font-semibold relative z-1" href={"/produtos"}>
+                  Contas
+                </Link>
+              </li>
+              <li>
+                <a className="font-semibold" href={"https://discord.com"}>
+                  Discord
+                </a>
+              </li>
             </ul>
-
           </nav>
         </div>
       </div>
       <div>
         <div></div>
       </div>
-    </div>
+    </header>
   );
 };
