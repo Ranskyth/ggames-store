@@ -1,7 +1,10 @@
+"use client"
+import { getProdutos } from "@/hooks/Produtos"
 import { Banner } from "../banner"
 import { CardCompra } from "../card-compra"
 
 export const HomePage = () => {
+    getProdutos()
     return(
         <div>
             <div className="flex mt-5 justify-center">

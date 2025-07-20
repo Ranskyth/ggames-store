@@ -5,6 +5,12 @@ export const ProdutosPage = () => {
     <div className="flex gap-11 px-12 py-7 w-full h-full">
       <div className="w-[25rem] p-5 bg-[#131313] border-2 h-[35rem] rounded-3xl border-amber-700">
         <h1 className="text-2xl">Categorias</h1>
+        <ul className="mt-5">
+          <li><a href="">Jogos</a></li>
+          <li><a href="">Contas</a></li>
+        </ul>
+
+  
       </div>
       <div className="grid w-full grid-cols-4 gap-5">
         <CardCompra />

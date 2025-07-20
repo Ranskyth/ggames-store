@@ -1,14 +1,14 @@
 "use client"
-import { list } from "@/components/card-compra";
+
 import { ProdutoID } from "@/components/pages/produto_id";
-import { ProdutosPage } from "@/components/pages/produtos";
+import { getProdutos, getProdutosByid } from "@/hooks/Produtos";
+
 import { useParams } from "next/navigation";
 
 export default function Produtos() {
     const {id} = useParams()
-    const lista = list.filter(l => l.id === id)
-    console.log(lista)
+    const list = getProdutosByid(Number(id))
   return (
-    <ProdutoID produto={lista}/>
+    <ProdutoID produto={list}/>
   );
 }

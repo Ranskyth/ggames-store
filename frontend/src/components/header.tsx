@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -29,13 +30,13 @@ export const Header = () => {
             <ul className="flex relative justify-between">
               <div className={`bg-amber-400 w-34 rounded-4xl h-[47px] ${pathname == "/produtos" ? `left-[84px] ease-in-out duration-500` : "left-[-47px] ease-in-out duration-500"} top-[-10px] absolute`}></div>
               <li>
-                <Link onClick={() => {}} className="font-semibold relative z-1" href={"/"}>
+                <Link className="font-semibold relative z-1" href={"/"}>
                   Inicio
                 </Link>
               </li>
               <li>
-                <Link onClick={() => {}} className="font-semibold relative z-1" href={"/produtos"}>
-                  Contas
+                <Link className="font-semibold relative z-1" href={"/produtos"}>
+                  Produtos
                 </Link>
               </li>
               <li>
@@ -47,8 +48,11 @@ export const Header = () => {
           </nav>
         </div>
       </div>
-      <div>
-        <div></div>
+      <div className="flex items-center gap-5 mx-14">
+        <button onClick={() => alert('oi')} className="p-3 rounded-2xl bg-[#4B4B4B]">
+          <img src="/icon/compra.svg" alt="" />
+        </button>
+        <Link href={"/login"}>Entrar</Link>
       </div>
     </header>
   );
