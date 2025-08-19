@@ -9,7 +9,7 @@ export const getProdutos = () => {
     useEffect(() => {
         (async() => {
             const res = await axios(`${BACKEND_API}/produtos`)
-            console.log(res.data)
+            console.log("res -> ",res.data)
             setProduto(res.data)
         })()
     },[])
@@ -22,7 +22,7 @@ export const getProdutosByid = (id: number) => {
     useEffect(() => {
         (async() => {
             const res = await axios(`${BACKEND_API}/produtos/${id}`)
-            console.log(res.data)
+            console.log("res -> ", res.data)
             setProduto(res.data)
         })()
     },[])

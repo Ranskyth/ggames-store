@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export const Header = () => {
   const pathname = usePathname()
 
-  console.log(pathname)
+  console.log("path -> ", pathname)
 
   return (
     <header className="flex border-b-2 mb-10 bg-[#131313] justify-between items-center">

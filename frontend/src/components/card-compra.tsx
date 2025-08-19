@@ -4,7 +4,7 @@ import { Image } from "@heroui/image";
 import { Card, CardBody, CardFooter } from "@heroui/card";
 import Link from "next/link";
 import { getProdutos } from "@/hooks/Produtos";
-import { useEffect } from "react";
+
 
 export const CardCompra = () => {
   const list = getProdutos()

@@ -1,7 +1,7 @@
 "use client"
 
 import { ProdutoID } from "@/components/pages/produto_id";
-import { getProdutos, getProdutosByid } from "@/hooks/Produtos";
+import { getProdutosByid } from "@/hooks/Produtos";
 
 import { useParams } from "next/navigation";
 
