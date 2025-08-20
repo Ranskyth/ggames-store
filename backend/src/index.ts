@@ -1,18 +1,27 @@
 import { Elysia } from "elysia";
-import { produtosRoutes } from "./routes/produtosRoutes";
+
 import 'dotenv/config';
-import { drizzle } from "drizzle-orm/mysql2";
 import cors from "@elysiajs/cors";
-
-
-const db = drizzle(process.env.DATABASE_URL!);
+import { LoginRoutes } from "./routes/loginRoutes";
+import { jwt } from "@elysiajs/jwt";
+import { ProdutosRoutes } from "./routes/produtosRoutes";
+import { UserRoutes } from "./routes/userRoutes";
 
 const app = new Elysia()
-app.use(cors({origin:"*", methods:"*"}))
+  .use(jwt({
+    name: "jwt",
+    secret: "secret",
+    exp: "1d"
+  }))
+  .use(LoginRoutes)
+  .use(ProdutosRoutes)
+  .use(UserRoutes)
 
-app.get("/", () => "Hello")
-app.use(produtosRoutes)
-app.listen(3333);
+  .use(cors({ origin: "*", methods: "*" }))
+  .get("/", () => "Hello")
+
+  .listen(3333);
+
 
 
 console.log(
