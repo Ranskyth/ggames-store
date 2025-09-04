@@ -1,12 +1,15 @@
 "use client"
 
+
+import { SheetContext } from "@/context/sheet-context";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export const Header = () => {
   const pathname = usePathname()
+  const {OpenSheet} = useContext(SheetContext)
 
   console.log("path -> ", pathname)
 
@@ -49,7 +52,7 @@ export const Header = () => {
         </div>
       </div>
       <div className="flex items-center gap-5 mx-14">
-        <button onClick={() => alert('oi')} className="p-3 rounded-2xl bg-[#4B4B4B]">
+        <button onClick={() => OpenSheet()} className="p-3 rounded-2xl bg-[#4B4B4B]">
           <img src="/icon/compra.svg" alt="" />
         </button>
         <Link href={"/login"}>Entrar</Link>

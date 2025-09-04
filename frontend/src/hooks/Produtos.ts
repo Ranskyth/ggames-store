@@ -8,7 +8,7 @@ export const getProdutos = () => {
     const [produto, setProduto] = useState<{ id: string; title: string; img: string; price: string; estoque: number; }[]>([])
     useEffect(() => {
         (async() => {
-            const res = await axios(`${BACKEND_API}/produtos`)
+            const res = await axios(`${BACKEND_API}/produto`)
             console.log("res -> ",res.data)
             setProduto(res.data)
         })()
@@ -21,7 +21,7 @@ export const getProdutosByid = (id: number) => {
         const [produto, setProduto] = useState<{ id: string; title: string; img: string; price: string; estoque: number; }[]>([])
     useEffect(() => {
         (async() => {
-            const res = await axios(`${BACKEND_API}/produtos/${id}`)
+            const res = await axios(`${BACKEND_API}/produto/${id}`)
             console.log("res -> ", res.data)
             setProduto(res.data)
         })()
