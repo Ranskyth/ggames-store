@@ -29,7 +29,7 @@ export const PagamentRoutes = (app: Elysia) =>
 					transaction_amount: Number(produto.price),
 					payment_method_id: "pix",
 					payer: {
-						email: "ga.lima2205@gmail.com",
+						email: "user@gmail.com",
 					},
 				}),
 			});
