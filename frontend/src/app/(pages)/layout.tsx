@@ -5,18 +5,19 @@ import { SheetContext } from "@/context/sheet-context";
 import { useContext } from "react";
 
 export default function ClientLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  const { status } = useContext(SheetContext);
-  return (<>
-    <main className={`h-[95vh] ${status ? `overflow-hidden` : null}`}>
-      {status ? <Sheet/> : null}
+	const { status } = useContext(SheetContext);
+	return (
+		<>
+			<main className={`h-[95vh] ${status ? `overflow-hidden` : null}`}>
+				{status ? <Sheet /> : null}
 
-      <Header />
-      {children}
-    </main>
-  </>
-  );
+				<Header />
+				{children}
+			</main>
+		</>
+	);
 }

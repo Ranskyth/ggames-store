@@ -1,29 +1,22 @@
 import { Elysia } from "elysia";
 
-import 'dotenv/config';
+import "dotenv/config";
 import cors from "@elysiajs/cors";
 import { LoginRoutes } from "./routes/loginRoutes";
-import { jwt } from "@elysiajs/jwt";
 import { ProdutosRoutes } from "./routes/produtosRoutes";
 import { UserRoutes } from "./routes/userRoutes";
+import { PagamentRoutes } from "./routes/pagementRoutes";
+import { PORT } from "./config/config";
 
 const app = new Elysia()
-  .use(jwt({
-    name: "jwt",
-    secret: "secret",
-    exp: "1d"
-  }))
-  .use(LoginRoutes)
-  .use(ProdutosRoutes)
-  .use(UserRoutes)
-
-  .use(cors({ origin: "*", methods: "*" }))
-  .get("/", () => "Hello")
-
-  .listen(3333);
-
-
+	.use(cors({ origin: "*", methods: "*" }))
+	.use(LoginRoutes)
+	.use(ProdutosRoutes)
+	.use(UserRoutes)
+	.use(PagamentRoutes)
+	.get("/", () => "Hello")
+	.listen(Number(PORT));
 
 console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+	`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
 );
