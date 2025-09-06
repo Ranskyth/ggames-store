@@ -52,7 +52,8 @@ export const Header = () => {
         </div>
       </div>
       <div className="flex items-center gap-5 mx-14">
-        <button onClick={() => OpenSheet()} className="p-3 rounded-2xl bg-[#4B4B4B]">
+        <button onClick={() => OpenSheet()} className="p-3 rounded-2xl relative bg-[#4B4B4B]">
+          <h1 className="bg-red-600 absolute w-5 h-5 -top-2 rounded-2xl -right-2">1</h1>
           <img src="/icon/compra.svg" alt="" />
         </button>
         <Link href={"/login"}>Entrar</Link>

@@ -1,7 +1,7 @@
-import { decimal, int, mysqlTable, serial, text, timestamp, varchar } from 'drizzle-orm/mysql-core';
+import { decimal, int, mysqlTable, text, timestamp, varchar } from 'drizzle-orm/mysql-core';
 
 export const produtoTable = mysqlTable('produto', {
-  id: serial().primaryKey().autoincrement(),
+  id: int().primaryKey().autoincrement(),
   title: varchar({ length: 255 }).notNull(),
   img: varchar({length: 1000}).notNull(),
   estoque: int().notNull(),
@@ -11,7 +11,7 @@ export const produtoTable = mysqlTable('produto', {
 });
 
 export const userTable = mysqlTable('user',{
-  id: serial().primaryKey().autoincrement(),
+  id: int().primaryKey().autoincrement(),
   nome: varchar({length: 150}).notNull(),
   email: varchar({length: 150}).notNull().unique(),
   senha: varchar({length: 50}).notNull(),
