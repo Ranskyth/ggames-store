@@ -36,14 +36,14 @@ export default function Produtos() {
 						<p className="text-[#fff] text-[22px]">{list[0]?.price}</p>
 						<p>({list[0]?.estoque} itens no estoque)</p>
 						<div className="flex flex-col gap-2">
-							<div className="flex border-2 text-white overflow-hidden items-center rounded-2xl w-full justify-between">
+							<div className="flex border-2 h-16 text-white overflow-hidden items-center rounded-2xl w-full justify-between">
 								<Button
 									onPress={() => {
 										if (quantity > 1) {
 											setQuantity((prev) => prev - 1);
 										}
 									}}
-									className="py-2 text-white px-6 rounded-2xl flex items-center font-bold text-3xl border-2"
+									className="py-2 text-white h-full px-6 rounded-2xl flex items-center font-bold text-3xl border-2"
 								>
 									-
 								</Button>
@@ -54,7 +54,7 @@ export default function Produtos() {
 											setQuantity((prev) => prev + 1);
 										}
 									}}
-									className="py-2 text-white px-6 rounded-2xl flex items-center font-bold text-3xl border-2"
+									className="py-2 text-white h-full px-6 rounded-2xl flex items-center font-bold text-3xl border-2"
 								>
 									+
 								</Button>

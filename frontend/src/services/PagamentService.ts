@@ -14,6 +14,9 @@ export const PagamentService = (produto_id: number) => {
 				body: JSON.stringify({ produtoId: Number(produto_id) }),
 			});
 			console.log(data.body);
+			if(!data.ok){
+				throw new Error("Error em PagamentService")
+			}
 			const datajson = await data.json();
 			console.log("datajson", datajson);
 			setPagament(datajson.data);

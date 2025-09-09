@@ -12,9 +12,8 @@ export default function ClientLayout({
 	const { status } = useContext(SheetContext);
 	return (
 		<>
-			<main className={`h-[95vh] ${status ? `overflow-hidden` : null}`}>
-				{status ? <Sheet /> : null}
-
+			<main className={`h-[100vh] ${status ? `overflow-hidden` : null} overflow-x-hidden w-full relative`}>
+				<Sheet />
 				<Header />
 				{children}
 			</main>
