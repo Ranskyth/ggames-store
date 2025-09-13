@@ -1,5 +1,14 @@
-export const Dashboard = () => {
+import {  SidebarAdmin } from "@/components/sidebarAdmin"
+
+
+
+const Dashboard = () => {
     return (
-        <div></div>
+        <div>
+      
+
+        </div>
     )
 }
+
+export default Dashboard
