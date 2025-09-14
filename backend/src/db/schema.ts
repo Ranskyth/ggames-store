@@ -26,3 +26,12 @@ export const userTable = mysqlTable("user", {
 	created_at: timestamp("created_at").defaultNow().notNull(),
 	updated_at: timestamp("updated_at").defaultNow().notNull().onUpdateNow(),
 });
+
+export const vendaTable = mysqlTable("venda", {
+	id: int().primaryKey().autoincrement(),
+	produto: varchar({length: 150}).notNull(),
+	valor: decimal({precision:10, scale:2}).notNull(),
+	statusPagamento: text().notNull(),
+	created_at: timestamp("created_at").defaultNow().notNull(),
+	updated_at: timestamp("updated_at").defaultNow().onUpdateNow()
+})

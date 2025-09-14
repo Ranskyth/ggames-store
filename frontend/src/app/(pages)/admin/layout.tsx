@@ -11,7 +11,7 @@ export default function DashboardLayout({
 		<>
 			<main className="flex">
 				<SidebarAdmin/>
-				<div className="bg-[#fff] rounded-2xl flex-1">
+				<div className="bg-[#222222] mt-18 m-2 p-5 rounded-2xl flex-1">
 					{children}
 				</div>
 			</main>

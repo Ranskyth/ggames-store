@@ -26,7 +26,7 @@ export const getProdutosByid = (id: number) => {
 	useEffect(() => {
 		(async () => {
 			const res = await axios(`${BACKEND_API}/produto/${id}`);
-			console.log("res -> ", res.data);
+			console.log("res -> ", res.data[0]);
 			setProduto(res.data);
 		})();
 	}, []);

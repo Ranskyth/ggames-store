@@ -1,17 +1,20 @@
+"use client"
 /* eslint-disable react-hooks/rules-of-hooks */
 import { BACKEND_API } from "@/config/config";
 import { useEffect, useState } from "react";
 
-export const PagamentService = (produto_id: number) => {
-	const [pagament, setPagament] = useState();
+export const PagamentService = () => {
+	const [pagament, setPagament] = useState({
+		qrcode:"",
+		value:0
+	});
 	console.log(pagament);
 
-	useEffect(() => {
-		(async () => {
+		const Pagar = async(produto_id: number, quantidade: number) => {
 			const data = await fetch(`${BACKEND_API}/pagament`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ produtoId: Number(produto_id) }),
+				body: JSON.stringify({ produtoId: Number(produto_id) , quantidade}),
 			});
 			console.log(data.body);
 			if(!data.ok){
@@ -19,9 +22,9 @@ export const PagamentService = (produto_id: number) => {
 			}
 			const datajson = await data.json();
 			console.log("datajson", datajson);
-			setPagament(datajson.data);
-		})();
-	}, []);
+			setPagament(datajson);
+		}
+	
 
-	return { pagament };
+	return {pagament, Pagar}
 };
