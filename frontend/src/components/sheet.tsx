@@ -27,8 +27,8 @@ export const Sheet = () => {
 				</p>
 				<ul className="mt-10">
 					<li className="flex flex-col gap-5">
-						<ProdutoCart/>
-						<ProdutoCart/>
+						<ProdutoCart />
+						<ProdutoCart />
 					</li>
 				</ul>
 			</div>
@@ -36,7 +36,9 @@ export const Sheet = () => {
 				<button className="border border-[#df8f60] px-5 py-2 rounded-2xl text-[19px]">
 					Esvaziar Carrinho
 				</button>
-				<button className="bg-[#fff] w-[180px] px-5 py-2 rounded-2xl text-[19px]">Comprar</button>
+				<button className="bg-[#fff] w-[180px] px-5 py-2 rounded-2xl text-[19px]">
+					Comprar
+				</button>
 			</div>
 		</div>
 	);

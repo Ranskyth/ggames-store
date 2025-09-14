@@ -26,7 +26,7 @@ export const PagamentRoutes = (app: Elysia) =>
 					Authorization: `Bearer ${ACESS_TOKEN_MERCADO_PAGO}`,
 				},
 				body: JSON.stringify({
-					transaction_amount: Number(produto.price) * body.quantidade, 
+					transaction_amount: Number(produto.price) * body.quantidade,
 					payment_method_id: "pix",
 					payer: {
 						email: "ga.lima2205@gmail.com",
@@ -36,23 +36,23 @@ export const PagamentRoutes = (app: Elysia) =>
 
 			const datajson = await data.json();
 
-			console.log(datajson.point_of_interaction.transaction_data.qr_code_base64);
-			console.log(datajson.transaction_details.total_paid_amount);
-			if(!body.quantidade){
-				produto.estoque =- 1
-			}else{
-				produto.estoque =- body.quantidade
+			console.log(datajson.point_of_interaction.transaction_data.qr_code);
+			if (!body.quantidade) {
+				produto.estoque = -1;
+			} else {
+				produto.estoque = -body.quantidade;
 			}
 
 			return {
 				value: datajson.transaction_details.total_paid_amount,
-				qrcode: datajson.point_of_interaction.transaction_data.qr_code_base64
+				qrcode: datajson.point_of_interaction.transaction_data.qr_code_base64,
+				pix: datajson.point_of_interaction.transaction_data.qr_code,
 			};
 		},
 		{
 			body: t.Object({
 				produtoId: t.Number(),
-				quantidade: t.Number()
+				quantidade: t.Number(),
 			}),
 		},
 	);

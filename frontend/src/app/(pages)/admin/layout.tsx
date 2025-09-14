@@ -10,7 +10,7 @@ export default function DashboardLayout({
 	return (
 		<>
 			<main className="flex">
-				<SidebarAdmin/>
+				<SidebarAdmin />
 				<div className="bg-[#222222] mt-18 m-2 p-5 rounded-2xl flex-1">
 					{children}
 				</div>
