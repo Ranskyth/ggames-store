@@ -1,25 +1,28 @@
 "use client";
 
-import { getCookie, setCookie } from "cookies-next";
-import { createContext, ReactNode, useState } from "react";
-
-interface Props {
-	qtProdutos: number;
-	addProduto: (ProdutoId: string, quantity?: number) => void;
-	removerProduto: () => void;
-	clearProduto: () => void;
-}
+import { CookieValueTypes, getCookie, setCookie } from "cookies-next";
+import { createContext, ReactNode, SetStateAction, useState } from "react";
 
 interface CartItem {
 	produtoId: string;
 	quantity?: number | undefined;
 }
 
+interface Props {
+	qtProdutos: number;
+	addProduto: (ProdutoId: string, quantity?: number) => void;
+	removerProduto: () => void;
+	clearProduto: () => void;
+	carrinho: CartItem[];
+}
+
+
 export const CartContext = createContext({} as Props);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
 	const [qtProdutos, setQtProdutos] = useState<number>(0);
-	const [qtCarrinho, setQtCarrinho] = useState<number>(0);
+	const produtslist: SetStateAction<CartItem[] | CookieValueTypes> | (CookieValueTypes | Promise<CookieValueTypes>)[] = []
+	const [carrinho, setCarrinho] = useState<CartItem[] | CookieValueTypes>([]);
 
 	const addProduto = (produtoId: string, quantity?: number) => {
 		setQtProdutos((prev) => prev + quantity!);
@@ -38,6 +41,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 			cart.push({ produtoId, quantity });
 		}
 		setCookie("cart", cart);
+
+		const item = getCookie("cart")
+		produtslist.push(item)
+		setCarrinho(produtslist)
 	};
 
 	const removerProduto = () => {
@@ -46,13 +53,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
 	const clearProduto = () => {
 		setQtProdutos(0);
+		setCookie("cart", "")
 	};
 
-	const cartProducts = () => {};
 
 	return (
 		<CartContext
-			value={{ addProduto, removerProduto, qtProdutos, clearProduto }}
+			value={{ addProduto, removerProduto, carrinho , qtProdutos, clearProduto }}
 		>
 			{children}
 		</CartContext>

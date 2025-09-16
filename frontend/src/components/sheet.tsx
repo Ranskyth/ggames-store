@@ -1,12 +1,13 @@
+import { CartContext } from "@/context/cart-context";
 import { SheetContext } from "@/context/sheet-context";
-import { motion } from "framer-motion";
-import { X, ShoppingCart } from "lucide-react";
+import { X } from "lucide-react";
 import { useContext } from "react";
 import { ProdutoCart } from "./produto-cart";
 
 export const Sheet = () => {
 	const { CloseSheet, status } = useContext(SheetContext);
-
+	const {carrinho} = useContext(CartContext)
+	console.log("::: products --->>", carrinho)
 	return (
 		<div
 			className={`w-[580px] flex flex-col justify-between p-5 h-screen bg-[#1b1b1b] z-20 absolute right-0 ${status ? "" : "translate-x-full"} duration-700`}
@@ -27,8 +28,7 @@ export const Sheet = () => {
 				</p>
 				<ul className="mt-10">
 					<li className="flex flex-col gap-5">
-						<ProdutoCart />
-						<ProdutoCart />
+						{carrinho.map((carrinho) => <ProdutoCart key={carrinho.produtoId}/>)}
 					</li>
 				</ul>
 			</div>

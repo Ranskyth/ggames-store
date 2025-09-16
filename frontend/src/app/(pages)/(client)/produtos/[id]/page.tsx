@@ -12,7 +12,6 @@ export default function Produtos() {
 	const { id } = useParams();
 	const list = getProdutosByid(Number(id));
 	const { addProduto } = useContext(CartContext);
-	const router = useRouter();
 	const [quantity, setQuantity] = useState<number>(1);
 	const { pagament, Pagar } = PagamentService();
 	console.log("pagament url ->", pagament);
@@ -86,7 +85,7 @@ export default function Produtos() {
 							</div>
 							<Button
 								onPress={async () => {
-									await Pagar(Number(id), quantityAtual);
+									await Pagar(Number(id), quantity);
 									(
 										document.getElementById("my_modal_1") as HTMLDialogElement
 									)?.showModal();
